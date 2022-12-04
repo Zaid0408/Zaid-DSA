@@ -115,10 +115,11 @@ void display(struct node *start)
 		printf("The contents of the list are:");
 		while(temp!=NULL)
 		{
-			printf("%d, ",temp->data);
+			printf("%d -> ",temp->data);
 			temp=temp->next;
 		}
 	}
+    printf("\n");
 }
 
 int main()
