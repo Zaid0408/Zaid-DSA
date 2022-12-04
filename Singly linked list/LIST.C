@@ -13,35 +13,6 @@ struct node
 struct node *start=NULL;
 
 
-int main()
-{
-
-	int a;
-	while(1)
-	{
-		printf("Enter 1 to add element\nEnter 2 to display list\nEnter 3 to delete element\nEnter 4 to exit\n");
-		scanf("%d",&a);
-
-
-		switch(a)
-		{
-			case 1:Insertrear();
-			break;
-			case 2:display();
-			break;
-			case 3:Del_front();
-			break;
-			case 4:exit(0);
-			break;
-			default:printf("invalid choice");
-			break;
-
-
-	}
-
-	}
-	return 0;
-}
 
 
 void Insertrear()
@@ -101,4 +72,34 @@ void display()
 			temp=temp->next;
 		}
 	}
+}
+
+int main()
+{
+
+	int a;
+	while(1)
+	{
+		printf("Enter 1 to add element\nEnter 2 to display list\nEnter 3 to delete element\nEnter 4 to exit\n");
+		scanf("%d",&a);
+
+
+		switch(a)
+		{
+			case 1:Insertrear();
+			break;
+			case 2:display();
+			break;
+			case 3:Del_front();
+			break;
+			case 4:exit(0);
+			break;
+			default:printf("invalid choice");
+			break;
+
+
+	}
+
+	}
+	return 0;
 }

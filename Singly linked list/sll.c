@@ -108,12 +108,12 @@ void display()
 }
 void Insertfront()
 {
-	struct node *temp=(struct node*)malloc(sizeof(struct node));
+	struct node *temp,*cur;
+	temp=(struct node*)malloc(sizeof(struct node));
 	printf("Enter a Number:\n");
 	scanf("%d",&temp->data);
 	temp->next=start;
 	start=temp;
-	
 }
 void Del_rear()
 {
