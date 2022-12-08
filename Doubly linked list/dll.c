@@ -82,7 +82,7 @@ struct node* delete_rear(struct node*start)
 {
 	struct node*temp=start;
 	if(start == NULL)
-	printf("Empty List");
+		printf("Empty List");
 	else if(start->next==NULL)
 	{	
 		free(start);
@@ -98,6 +98,53 @@ struct node* delete_rear(struct node*start)
 		free(temp->next);
 		temp->next=NULL;
 	}
+	return start;
+}
+
+struct node* Insert_pos(struct node *start)
+{
+	struct node *cur,*newnode;
+	newnode=(struct node*)malloc(sizeof(struct node));
+	int pos,count=1;
+	printf("Enter the elemnt to be inserted:\n");
+	scanf("%d",&newnode->data);
+	printf("Enter the position at which it has to be inserted:\n");
+	scanf("%d",&pos);
+	if(start== NULL)
+	{
+		printf("list is empty\n");
+		return start;
+	}
+	if(pos==1)
+	{
+		newnode->next=start;
+		start->prev=newnode;
+		return newnode;
+	}
+	while(cur->next!=NULL)
+	{
+		if(pos==count+1)
+		{
+			newnode->next=cur->next;
+			cur->next=newnode;
+			newnode->prev=cur;
+			
+		}
+		cur=cur->next;
+		count +=1;
+	}
+	if(cur->next==NULL)
+	{
+		cur->next=newnode;
+		newnode->next=NULL;
+		newnode->prev=cur;
+	}
+	if(pos<1 && pos> count+1)
+	{
+		printf("Invalid Position");
+		return start;
+	}
+	start=cur;
 	return start;
 }
 
@@ -129,7 +176,7 @@ int main()
 	int a;
 	while(1)
 	{
-		printf("\nEnter 1 to add element from before\nEnter 2 to display list\nEnter 3 to add element from rear\nEnter 4 to exit\nEnter 5 to delete front and\nEnter 6 to delete rear:\n");
+		printf("\nEnter 1 to add element from before\nEnter 2 to display list\nEnter 3 to add element from rear\nEnter 4 to exit\nEnter 5 to delete front and\nEnter 6 to delete rear:\nEnter 7 to Insert at a given position\n");
 		scanf("%d",&a);
 
 
@@ -147,6 +194,8 @@ int main()
             break;
             case 6:start=delete_rear(start);
             break;
+			case 7:start=Insert_pos(start);
+			break;
 			default:printf("invalid choice");
 			break;
 
