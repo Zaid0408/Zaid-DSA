@@ -28,7 +28,6 @@ struct node *Insertfront(struct node *start)
 	return start;
 }
 
-
 struct node *Insertrear(struct node *start)
 {
 	int num;
@@ -37,7 +36,6 @@ struct node *Insertrear(struct node *start)
 	printf("\nEnter a number");
 	scanf("%d",&num);
 	new_node->data=num;
-
 	if(start==NULL)
 	{
 		start=new_node;
@@ -77,7 +75,6 @@ struct node* delete_front(struct node*start)
 	}
     return start;
 }
-
 struct node* delete_rear(struct node*start)
 {
 	struct node*temp=start;
@@ -100,7 +97,39 @@ struct node* delete_rear(struct node*start)
 	}
 	return start;
 }
-
+struct node* delete_mid(struct node*start)
+{
+	int count=1;
+	struct node *p,*q,*r,*cur;
+	cur=p=q=start;
+	while(cur->next!=NULL)
+	{
+		count +=1;
+		cur=cur->next;
+	}
+	printf("%d\n",count);
+	while(p!=NULL && p->next!=NULL)
+	{
+		p=p->next->next;
+		q=q->next;
+	}
+	if(count%2==1)
+	{
+		printf("Deleted value is %d\n",q->data);
+		r=q;
+		q->prev->next=q->next;
+		free(r);
+	}
+	else if(count%2==0)
+	{
+		printf("Deleted value is %d\n",q->prev->data);
+		q=q->prev;
+		r=q;
+		q->prev->next=q->next;
+		free(r);
+	}
+	return start;
+}
 struct node* Insert_pos(struct node *start)
 {
 	struct node *cur,*newnode;
@@ -147,7 +176,6 @@ struct node* Insert_pos(struct node *start)
 	start=cur;
 	return start;
 }
-
 void display(struct node *start)
 {
 	struct node *temp=(struct node*)malloc(sizeof(struct node));
@@ -166,20 +194,18 @@ void display(struct node *start)
 			temp=temp->next;
 		}
 	}
-    printf("\n");
+    printf("NULL\n");
 }
-
 int main()
 {
 
 	struct node *start=NULL;
 	int a;
+	printf("\nEnter 1 to add element from before\nEnter 2 to display list\nEnter 3 to add element from rear\nEnter 4 to exit\nEnter 5 to delete front and\nEnter 6 to delete rear:\nEnter 7 to Delete the middle element in the list\n");
 	while(1)
 	{
-		printf("\nEnter 1 to add element from before\nEnter 2 to display list\nEnter 3 to add element from rear\nEnter 4 to exit\nEnter 5 to delete front and\nEnter 6 to delete rear:\nEnter 7 to Insert at a given position\n");
+		printf("Enter the choice:\n");
 		scanf("%d",&a);
-
-
 		switch(a)
 		{
 			case 1:start=Insertfront(start);
@@ -194,14 +220,11 @@ int main()
             break;
             case 6:start=delete_rear(start);
             break;
-			case 7:start=Insert_pos(start);
+			case 7:start=delete_mid(start);
 			break;
 			default:printf("invalid choice");
 			break;
-
-
 		}
-
 	}
 	return 0;
 }
