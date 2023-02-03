@@ -109,25 +109,25 @@ N delete_BST(N tree, int val)
 	}
 	else
 	{
-		N psuc,suc;
-		psuc=cur;
-		suc=cur->right;
-		while(suc->left!=NULL)
+		N a,b;
+		a=cur;
+		b=cur->right;
+		while(b->left!=NULL)
 		{
-			psuc=suc;
-			suc=suc->left;
+			a=b;
+			b=b->left;
 		}
-		cur->data=suc->data;
-		if(psuc==cur)
+		cur->data=b->data;
+		if(a==cur)
 		{
-			psuc->right=suc->right;
+			a->right=b->right;
 		}
 		else
 		{
-			psuc->left=suc->right;
+			a->left=b->right;
 		}
-		printf("%d is deleted\n",suc->data);
-		free(suc);
+		printf("%d is deleted\n",b->data);
+		free(b);
 	}
 	return tree;
 }
