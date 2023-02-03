@@ -63,12 +63,12 @@ N delete_BST(N tree, int val)
 			cur=cur->right;
 		}
 	}
-	printf("\n The node to be deleted is %d",cur->data);
 	if(cur==NULL)
 	{
 		printf("Value is not present\n");
 		return tree;
 	}
+	printf("\n The node to be deleted is %d",cur->data);
 	if(cur->left==NULL && cur->right==NULL)
 	{
 		if(cur->data<parent->data)
