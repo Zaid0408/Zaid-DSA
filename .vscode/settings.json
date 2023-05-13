@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "LIST.C": "cpp"
+        "LIST.C": "cpp",
+        "INFIXTOP.C": "cpp"
     }
 }
